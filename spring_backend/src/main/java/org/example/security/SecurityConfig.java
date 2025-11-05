@@ -63,6 +63,9 @@ public class SecurityConfig {
         config.setAllowedOrigins(List.of(allowedOrigin));
         config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","PATCH","OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
+        // Expose Authorization so frontend can read JWT-bearing responses when needed
+        config.setExposedHeaders(List.of("Authorization", "Content-Disposition"));
+        // Allow credentials for cookie-based flows or auth headers
         config.setAllowCredentials(true);
         config.setMaxAge(3600L);
         return config;
